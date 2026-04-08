@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achadosda.net08</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#0f172a; color:#fff; }
+    header { background:#020617; padding:15px; text-align:center; font-size:24px; font-weight:bold; }
+    .topbar { display:flex; flex-wrap:wrap; gap:10px; padding:15px; justify-content:center; background:#020617; }
+    input { padding:10px; border-radius:10px; border:none; width:250px; }
+    select { padding:10px; border-radius:10px; border:none; }
+    .container { padding:20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
+    .card { background:#111827; border-radius:15px; padding:15px; box-shadow:0 0 10px rgba(0,0,0,0.5); transition:0.3s; }
+    .card:hover { transform:scale(1.03); }
+    .card img { width:100%; border-radius:10px; }
+    .title { font-size:16px; margin:10px 0; }
+    .price { color:#22c55e; font-size:18px; font-weight:bold; }
+    .btn { display:block; margin-top:10px; background:#22c55e; color:#000; text-align:center; padding:10px; border-radius:10px; text-decoration:none; font-weight:bold; }
+    .btn:hover { background:#16a34a; }
+  </style>
+</head>
+<body>
+
+<header>🔥 Achadosda.net08 - Promoções Imperdíveis</header>
+
+<div class="topbar">
+  <input type="text" id="search" placeholder="Buscar produtos..." onkeyup="filtrar()">
+  <select id="categoria" onchange="filtrar()">
+    <option value="">Todas Categorias</option>
+    <option value="eletronico">Eletrônicos</option>
+    <option value="casa">Casa</option>
+    <option value="beleza">Beleza</option>
+  </select>
+</div>
+
+<div class="container" id="produtos">
+
+  <div class="card" data-categoria="eletronico">
+    <img src="https://via.placeholder.com/300">
+    <div class="title">Fone Bluetooth Top</div>
+    <div class="price">R$ 89,90</div>
+    <a class="btn" href="SEU_LINK_AFILIADO_AQUI" target="_blank">Ver Oferta</a>
+  </div>
+
+  <div class="card" data-categoria="eletronico">
+    <img src="https://via.placeholder.com/300">
+    <div class="title">Smartwatch Barato</div>
+    <div class="price">R$ 129,90</div>
+    <a class="btn" href="SEU_LINK_AFILIADO_AQUI" target="_blank">Ver Oferta</a>
+  </div>
+
+  <div class="card" data-categoria="casa">
+    <img src="https://via.placeholder.com/300">
+    <div class="title">Caixa de Som Potente</div>
+    <div class="price">R$ 149,90</div>
+    <a class="btn" href="SEU_LINK_AFILIADO_AQUI" target="_blank">Ver Oferta</a>
+  </div>
+
+</div>
+
+<script>
+function filtrar() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let categoria = document.getElementById("categoria").value;
+  let produtos = document.querySelectorAll(".card");
+
+  produtos.forEach(produto => {
+    let titulo = produto.querySelector(".title").innerText.toLowerCase();
+    let cat = produto.getAttribute("data-categoria");
+
+    let matchBusca = titulo.includes(input);
+    let matchCategoria = categoria === "" || categoria === cat;
+
+    if (matchBusca && matchCategoria) {
+      produto.style.display = "block";
+    } else {
+      produto.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
